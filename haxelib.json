@@ -1,0 +1,16 @@
+{
+    "name": "darkside-node",
+    "version": "0.0.0",
+    "description": "",
+    "tags": ["darkside"],
+    "url": "https://github.com/tong/darkside-node",
+    "targets": [],
+    "license": "OM",
+    "contributors": ["tong"],
+    "releasenote": "See CHANGELOG",
+    "classPath" : "src/",
+    "dependencies": {
+        "hxnodejs-serialport": "",
+        "om.color": ""
+    }
+}
