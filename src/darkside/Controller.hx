@@ -6,7 +6,6 @@ import js.html.ArrayBuffer;
 import js.html.Uint8Array;
 import js.node.Buffer;
 import js.npm.SerialPort;
-import js.npm.SerialPort;
 import om.color.space.RGB;
 
 class Controller {
@@ -101,20 +100,16 @@ class Controller {
 
     public static function searchDevices( ?allowedDevices : Array<String>, callback : Error->Array<SerialPortInfo>->Void ) {
         SerialPort.list( function(e,infos) {
-            if( e != null ) {
-                callback( e, null );
-            } else {
+            if( e != null ) callback( e, null ) else {
                 var devices = new Array<SerialPortInfo>();
                 for( dev in infos ) {
-                    if( allowedDevices != null ) {
-                        var allowed = false;
+                    if( allowedDevices == null ) devices.push( dev ) else {
                         for( allowedDevice in allowedDevices ) {
                             if( dev.serialNumber == allowedDevice ) {
-                                allowed = true;
+                                devices.push( dev );
                                 break;
                             }
                         }
-                        if( allowed ) devices.push( dev );
                     }
                 }
                 callback( null, devices );
